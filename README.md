@@ -10,11 +10,12 @@ is not completed, the SYN+ACK packet from the server is not sended. With this to
 I'll try to capture the first SYN packet from the server and the SYN+ACK packet from
 the client to craft an spoofed SYN+ACK packet from the server to fool the client and
 permit the connection.
+![screenshot](https://github.com/stevenvegar/CTF-Tools/blob/main/ContemporaneousOpen.png)
 
 ### Usage:
  sudo python3 packet_sniffer.py
  
-![screenshot](https://github.com/stevenvegar/file_downloader/blob/main/screenshot.png)
+![screenshot](https://github.com/stevenvegar/CTF-Tools/blob/main/packet_sniffer.png)
 
 
 ### TODO:
