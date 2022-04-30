@@ -21,7 +21,7 @@ def tcp_flags(flags):
     if tcp_flags[-1] == "1":
         str_flags += "FIN"
     if tcp_flags[-2] == "1":
-        str_flags += "+SIN"
+        str_flags += "+SYN"
     if tcp_flags[-3] == "1":
         str_flags += "+RST"
     if tcp_flags[-4] == "1":
@@ -45,7 +45,7 @@ while True:
     #packet string from tuple
     packet = s.recvfrom(65565)[0]
     #take first 20 characters for the IP header and now unpack them :)
-    ip_header = unpack('!BBHHHBBH4s4s' , packet[0:20])
+    ip_header = unpack('!BBHHHBBH4s4s', packet[0:20])
     #IP header information
     IP_ver = ip_header[0] >> 4
     ihl = ip_header[0] & 0xF
