@@ -88,7 +88,7 @@ while True:
     data_size = plen - ip_header_length - tcp_header_length
     data = packet[plen - data_size:]
 
-    print ('Version:' + str(IP_ver) + '  Protocol:' + str(proto) + '  DSCP:' + str(tos) + '  ID:' + str(pid) + '  Offset:' + str(hex(offset)) + '  TTL:' + str(ttl))
+    print ('IPVersion:' + str(IP_ver) + '  Protocol:' + str(proto) + '  DSCP:' + str(tos) + '  ID:' + str(pid) + '  Offset:' + str(hex(offset)) + '  TTL:' + str(ttl))
     print ('TotalLength:' + str(plen) + '  IPHeadLength:' + str(ip_header_length)  + '  Checksum:' + str(hex(ipsum)) + '  TCPHeadLength:' + str(tcp_header_length) + '  Checksum:' + str(hex(tcpsum)))
     print ('SrcAddress:' + str(s_addr) + '  SrcPort:' + str(source_port) + '  DstAddress:' + str(d_addr) + '  DstPort:' + str(dest_port))
     print ('SeqNum:' + str(seqnum) + '  AckNum:' + str(acknum) + '  Flags:' + tcp_flags(flags) + '  WindowSize:' + str(window) +  '  Pointer:' + str(pointer))
