@@ -92,14 +92,14 @@ Then, let's try to capture the packets sent by the challenge server using the fr
 
 ```bash
 └──╼ $sudo python3 TCPSimultaneousOpen.py 
-SourceMAC:e4:8d:8c:7d:5b:2a  DestinationMAC:08:00:27:a0:ca:18  Protocol:8
+SourceMAC:e4:8d:8c:xx:xx:xx  DestinationMAC:08:00:27:xx:xx:xx  Protocol:8
 Version:4  Protocol:TCP(6)  DSCP:0  ID:43085  Offset:0x4000  TTL:56
 TotalLength:60  IPHeadLength:20  Checksum:0x4324  TCPHeadLength:40  Checksum:0xc263
 SrcAddress:34.121.91.31  SrcPort:50746  DstAddress:192.168.XX.XX  DstPort:80
 SeqNum:513852226  AckNum:0  Flags:SYN  WindowSize:42600  Pointer:0
 Data: 0
 -------------------------------------------------------------------------------------
-SourceMAC:08:00:27:a0:ca:18  DestinationMAC:e4:8d:8c:7d:5b:2a  Protocol:8
+SourceMAC:08:00:27:xx:xx:xx  DestinationMAC:e4:8d:8c:xx:xx:xx  Protocol:8
 Version:4  Protocol:TCP(6)  DSCP:0  ID:0  Offset:0x4000  TTL:64
 TotalLength:40  IPHeadLength:20  Checksum:0xe385  TCPHeadLength:20  Checksum:0xb017
 SrcAddress:192.168.XX.XX  SrcPort:80  DstAddress:34.121.91.31  DstPort:50746
@@ -178,7 +178,7 @@ hmm nope looks like you didn't get it...
 ```
 ```bash
 └──╼ $sudo python3 TCPSimultaneousOpen.py 
-SourceMAC:e4:8d:8c:7d:5b:2a  DestinationMAC:08:00:27:a0:ca:18  Protocol:8
+SourceMAC:e4:8d:8c:xx:xx:xx  DestinationMAC:08:00:27:xx:xx:xx  Protocol:8
 Version:4  Protocol:TCP(6)  DSCP:0  ID:24428  Offset:0x4000  TTL:56
 TotalLength:60  IPHeadLength:20  Checksum:0x8c05  TCPHeadLength:40  Checksum:0x1afa
 SrcAddress:34.121.91.31  SrcPort:44916  DstAddress:192.168.XX.XX  DstPort:80
@@ -194,28 +194,28 @@ Sending ACK packet
 Sent 1 packets.
 Custom ACK sended!
 ------------------------------------------------------------------------------------- ↑ the first SYN packet sent by the server, and our two crafted packets sent
-SourceMAC:08:00:27:a0:ca:18  DestinationMAC:e4:8d:8c:7d:5b:2a  Protocol:8
+SourceMAC:08:00:27:xx:xx:xx  DestinationMAC:e4:8d:8c:xx:xx:xx  Protocol:8
 Version:4  Protocol:TCP(6)  DSCP:0  ID:1  Offset:0x0  TTL:64
 TotalLength:40  IPHeadLength:20  Checksum:0x2385  TCPHeadLength:20  Checksum:0x88d3
 SrcAddress:192.168.XX.XX  SrcPort:80  DstAddress:34.121.91.31  DstPort:44916
 SeqNum:0  AckNum:0  Flags:SYN  WindowSize:8192  Pointer:0
 Data: 0
 ------------------------------------------------------------------------------------- ↑ our SYN sent to the server with the dst port same as src port of first packet 
-SourceMAC:08:00:27:a0:ca:18  DestinationMAC:e4:8d:8c:7d:5b:2a  Protocol:8
+SourceMAC:08:00:27:xx:xx:xx  DestinationMAC:e4:8d:8c:xx:xx:xx  Protocol:8
 Version:4  Protocol:TCP(6)  DSCP:0  ID:24429  Offset:0x0  TTL:56
 TotalLength:40  IPHeadLength:20  Checksum:0xcc18  TCPHeadLength:20  Checksum:0xff1e
 SrcAddress:192.168.XX.XX  SrcPort:80  DstAddress:34.121.91.31  DstPort:44916
 SeqNum:1  AckNum:422867057  Flags:ACK  WindowSize:8192  Pointer:0
 Data: 0
 ------------------------------------------------------------------------------------- ↑ our ACK sent to the server with all modification to respond to the first packet
-SourceMAC:e4:8d:8c:7d:5b:2a  DestinationMAC:08:00:27:a0:ca:18  Protocol:8
+SourceMAC:e4:8d:8c:xx:xx:xx  DestinationMAC:08:00:27:xx:xx:xx  Protocol:8
 Version:4  Protocol:TCP(6)  DSCP:0  ID:24429  Offset:0x4000  TTL:56
 TotalLength:60  IPHeadLength:20  Checksum:0x8c04  TCPHeadLength:40  Checksum:0x1a30
 SrcAddress:34.121.91.31  SrcPort:44916  DstAddress:192.168.XX.XX  DstPort:80
 SeqNum:422867056  AckNum:1  Flags:SYN+ACK  WindowSize:42600  Pointer:0
 Data: 0
 ------------------------------------------------------------------------------------- ↑ a SYN+ACK from the server responding to our SYN, now, the server is connected to our machine
-SourceMAC:e4:8d:8c:7d:5b:2a  DestinationMAC:08:00:27:a0:ca:18  Protocol:8
+SourceMAC:e4:8d:8c:xx:xx:xx  DestinationMAC:08:00:27:xx:xx:xx  Protocol:8
 Version:4  Protocol:TCP(6)  DSCP:0  ID:24430  Offset:0x4000  TTL:56
 TotalLength:256  IPHeadLength:20  Checksum:0x8b3f  TCPHeadLength:20  Checksum:0xb681
 SrcAddress:34.121.91.31  SrcPort:44916  DstAddress:192.168.XX.XX  DstPort:80
