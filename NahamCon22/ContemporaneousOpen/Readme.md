@@ -17,15 +17,68 @@ but, I prefer to do it using sockets, this way I can see and manipulate raw data
 This script captures the ethernet frames, here we can grab the information from OSI-layer 2, which means, we can clasify frames depending on 
 their [EtherType](https://en.wikipedia.org/wiki/EtherType). In this case, we will capture IPv4 only frames. The script grabs all the raw information and declare them into variables, useful 
 when we need to manipulate or get a specific packet field. This script captures <ins>inbound and outbound frames</ins>, works in Linux only.
-![screenshot](https://github.com/stevenvegar/CTF-Tools/blob/main/NahamCon22/ContemporaneousOpen/frame_sniffer.png)
+```bash
+└──╼ $sudo python3 frame_sniffer.py 
+SourceMAC:08:00:27:xx:xx:xx  DestinationMAC:e4:8d:8c:xx:xx:xx  Protocol:8
+Version:4  Protocol:TCP(6)  DSCP:0  ID:23257  Offset:0x4000  TTL:64
+TotalLength:412  IPHeadLength:20  Checksum:0xcfdc  TCPHeadLength:32  Checksum:0x1035
+SrcAddress:192.168.XX.XX  SrcPort:36880  DstAddress:23.239.29.5  DstPort:80
+SeqNum:54073446  AckNum:2448585548  Flags:PSH+ACK  WindowSize:501  Pointer:0
+Data: 360
+GET / HTTP/1.1
+Host: openspeedtest.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101 Firefox/91.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+DNT: 1
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+Cache-Control: max-age=0
 
+-------------------------------------------------------------------------------------
+
+SourceMAC:e4:8d:8c:xx:xx:xx  DestinationMAC:08:00:27:xx:xx:xx  Protocol:8
+Version:4  Protocol:TCP(6)  DSCP:0  ID:52906  Offset:0x4000  TTL:51
+TotalLength:52  IPHeadLength:20  Checksum:0x6a73  TCPHeadLength:32  Checksum:0x5d9c
+SrcAddress:23.239.29.5  SrcPort:80  DstAddress:192.168.XX.XX  DstPort:36880
+SeqNum:2448585548  AckNum:54073806  Flags:ACK  WindowSize:505  Pointer:0
+Data: 0
+
+-------------------------------------------------------------------------------------
+```
 
 ## [packet_sniffer.py](https://github.com/stevenvegar/CTF-Tools/blob/main/NahamCon22/ContemporaneousOpen/packet_sniffer.py)
 This script is similar to the above, but this captures only TCP <ins>inbound packets</ins> and doesn't shows link layer info.
-![screenshot](https://github.com/stevenvegar/CTF-Tools/blob/main/NahamCon22/ContemporaneousOpen/packet_sniffer.png)
-
+```bash
+```
 
 ### TODO:
 - Add support to capture other IP packet types (UDP, ICMP, etc).
 - Add filters specifing them with parameters.
 - Save output to pcap file.
+
+
+## Solving the challenge
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
