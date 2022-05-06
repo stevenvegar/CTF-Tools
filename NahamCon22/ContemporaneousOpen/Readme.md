@@ -13,14 +13,14 @@ but, I prefer to do it using sockets, this way I can see and manipulate raw data
 ![screenshot](https://github.com/stevenvegar/CTF-Tools/blob/main/NahamCon22/ContemporaneousOpen/ContemporaneousOpen.png)
 
 
-## frame_sniffer.py
+## [frame_sniffer.py](https://github.com/stevenvegar/CTF-Tools/blob/main/NahamCon22/ContemporaneousOpen/frame_sniffer.py)
 This script captures the ethernet frames, here we can grab the information from OSI-layer 2, which means, we can clasify frames depending on 
 their [EtherType](https://en.wikipedia.org/wiki/EtherType). In this case, we will capture IPv4 only frames. The script grabs all the raw information and declare them into variables, useful 
 when we need to manipulate or get a specific packet field. This script captures <ins>inbound and outbound frames</ins>, works in Linux only.
 ![screenshot](https://github.com/stevenvegar/CTF-Tools/blob/main/NahamCon22/ContemporaneousOpen/frame_sniffer.png)
 
 
-## packet_sniffer.py
+## [packet_sniffer.py](https://github.com/stevenvegar/CTF-Tools/blob/main/NahamCon22/ContemporaneousOpen/packet_sniffer.py)
 This script is similar to the above, but this captures only TCP <ins>inbound packets</ins> and doesn't shows link layer info.
 ![screenshot](https://github.com/stevenvegar/CTF-Tools/blob/main/NahamCon22/ContemporaneousOpen/packet_sniffer.png)
 
