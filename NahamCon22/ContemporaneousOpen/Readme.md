@@ -10,7 +10,7 @@ So, in this challenge we need to create that kind connection first in order the 
 
 I had in my pending projects, write a packet sniffer with Python, so I put my hands on this. This can be simply done with the Scapy framework
 but, I prefer to do it using sockets, this way I can see and manipulate raw data.
-![screenshot](https://github.com/stevenvegar/CTF-Tools/blob/main/ContemporaneousOpen.png)
+![screenshot](https://github.com/stevenvegar/CTF-Tools/blob/main/NahamCon22/ContemporaneousOpen/ContemporaneousOpen.png)
 
 
 ## frame_sniffer.py
