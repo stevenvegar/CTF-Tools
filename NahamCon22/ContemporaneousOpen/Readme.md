@@ -1,10 +1,10 @@
 # Contemporaneous Open
 
-This is a challenge where we need to manipulate TCP packets. When we connect to the server, it request an IP to send the flag in a POST
-request form, it explicitly says that no SYN+ACK packets will be received to the server, so the 3-way handshake will not be possible. But, is there 
-another way to connect with the server using TCP ? The answer is yes! and the hint is in the challenge's name. There is a alternative way to
-create a TCP connection called "TCP Simultaneous Open" (explanation [here](https://diameter-protocol.blogspot.com/2014/03/simultaneous-open-tcp-connections.html)) which consists in the two devices will act as a server and client at
-the same time, and the connection is established when both responds to a special SYN packet.
+This is a challenge where we need to manipulate TCP packets. When we connect to the server, we need to provide an IP to ther server, then it
+can send the flag in a POST request form, it explicitly says that no SYN+ACK packets will be received to the server, so the 3-way handshake will
+not be possible. But, is there another way to connect with the server using TCP ? The answer is yes! and the hint is in the challenge's name.
+There is a alternative way to create a TCP connection called "TCP Simultaneous Open" (explanation [here](https://diameter-protocol.blogspot.com/2014/03/simultaneous-open-tcp-connections.html)) which consists in the two devices will
+act as a server and client at the same time, and the connection is established when both responds to a special SYN packet.
 
 So, in this challenge we need to create that kind connection first in order the server can be able to send us the flag.
 
