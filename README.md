@@ -5,5 +5,5 @@ My own developed tools used in CTF competitions
 - Contemporaneous Open
    - frame_sniffer.py
    - packet_sniffer.py
-   - packet_injector.py
+   - TCPSimultaneousOpen.py
 
