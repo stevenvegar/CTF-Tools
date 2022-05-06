@@ -1,4 +1,4 @@
-# CTF-Tools
+# CTF-Writeups-and-Tools
 My own developed tools used in CTF competitions
 
 ## NahamCon2022
