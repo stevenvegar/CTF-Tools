@@ -1,4 +1,4 @@
-#Packet sniffer in python for Linux, not working on Windows
+#Ethernet frames sniffer in python for Linux, not working on Windows
 #Run with sudo
 #Sniffs received and sended Ethernet frames and TCP packet
 #Struct CTypes: https://docs.python.org/3/library/struct.html
