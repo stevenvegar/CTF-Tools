@@ -235,7 +235,7 @@ flag=flag%7B6acfdfc9369eadfdb9439b0ac3969711%7D%0A
 ------------------------------------------------------------------------------------- ↑ the POST request sent from the server with the flag !!! =D
 ```
 
-That was an exciting journey, I leaned a lot new things, improved my Python scripting skills, I didn't know anything about "TCP Simultaneous Open" and finally I have my own packet capture script that will help me in future CTFs.
+That was an exciting journey, I learned a lot of new things, improved my Python scripting skills, I didn't know anything about "TCP Simultaneous Open" and finally I have my own packet capture script that will help me in future CTFs.
 
 Thanks to the players who uploaded write-ups right after the CTF finished. Check theirs too:
    - [yetanotherf0rked - Spending spring days crafting packets at NahamCon 2022 (1 of 3)](https://github.com/yetanotherf0rked/ctf-writeups/blob/main/NahamCon2022/Just%20crafting%20packets%20at%20Nahamcon2022%20(1%20of%203).md)
