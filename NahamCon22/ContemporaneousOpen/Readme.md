@@ -222,7 +222,7 @@ SrcAddress:34.121.91.31  SrcPort:44916  DstAddress:192.168.XX.XX  DstPort:80
 SeqNum:422867057  AckNum:1  Flags:PSH+ACK  WindowSize:333  Pointer:0
 Data: 216
 POST / HTTP/1.1
-Host: 201.202.102.148
+Host: 201.202.XX.XX
 User-Agent: python-requests/2.27.1
 Accept-Encoding: gzip, deflate
 Accept: */*
