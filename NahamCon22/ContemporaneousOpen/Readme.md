@@ -72,13 +72,13 @@ Content-Type: text/html
 
 
 ## Solving the challenge
-First, as the server is requesting our IP address, this should be the public IP address and we need to receive it requests directly to out machine so,
+First, as the server is requesting our IP address, this should be a public IP address and we need to receive it requests directly to our machine so,
 we need to do a NAT port forwarding on our ISP and home's router. All packets with the destination port = 80 received at our IP public address should be
 redirected to out home's router and it should redirect it again to out machine within the local network. This is a little networking basics.
 
 chall-server -> our public address -> ISP router -> home's router -> out attacking machine
 
-Then, let's try to capture the packets sent by the challenge server using the frame_sniffer.py script and analyze them. Also, let's put a filter in our frame_sniffer.py to visualize only the packets with src_port or dst_port 80. Also, remember to rename this script to TCPSimultaneousOpen.py to avoid re-write the original code.
+Then, let's try to capture the packets sent by the challenge server using the frame_sniffer.py script and analyze them. Also, let's put a filter in our frame_sniffer.py to visualize only the packets with src_port or dst_port = 80. Also, remember to rename this script to TCPSimultaneousOpen.py to avoid re-write the original code.
 
 ```python
 #before the script prints the packet info, add an "if" condition
@@ -108,7 +108,7 @@ Data: 0
 -------------------------------------------------------------------------------------
 ```
 
-As we can see, the challenge server sends a SYN packet and our machine responds with an RST+ACK packet because it doesn't expect to receive a connection over HTTP. Following the "TCP Simultaneous Open" procedure, we need to send the server a SYN packet equal to the one received and another packet with the ACK flag to acknowledge the first SYN sent by the server. Remember that the server will not receive SYN+ACK packets, instead, we will send a simple ACK packet to tell the server we are ready to connect.
+As we can see, the challenge server sends a SYN packet and our machine responds to it with a RST+ACK packet because it doesn't expect to receive a connection over HTTP. Following the "TCP Simultaneous Open" procedure, we need to send to the server a SYN packet equal to the one received and another packet with the ACK flag to acknowledge the first SYN sent by the server. Remember that the server will not receive SYN+ACK packets, instead, we will send a simple ACK packet to tell the server we are ready to connect.
 
 In order to connect with the server we need to create the following packets:
 - SYN packet:
@@ -125,7 +125,7 @@ In order to connect with the server we need to create the following packets:
    - dest IP : server's IP (taken from the server's SYN source IP)
    - srce port : 80
    - dest port : server's source port (taken from the server's SYN source port)
-   - seq num : server's SYN packet ack num + 1 (0)
+   - seq num : server's SYN packet ack num + 1
    - ack num : server's SYN packet seq num + 1
    - TCP flags : ACK
 
