@@ -237,7 +237,7 @@ flag=flag%7B6acfdfc9369eadfdb9439b0ac3969711%7D%0A
 
 That was an exciting journey, I leaned a lot new things, improved my Python scripting skills, I didn't know anything about "TCP Simultaneous Open" and finally I have my own packet capture script that will help me in future CTFs.
 
-Thanks to the players who uploaded write-ups right after the CTF ended. Check theirs too:
+Thanks to the players who uploaded write-ups right after the CTF finished. Check theirs too:
    - [yetanotherf0rked - Spending spring days crafting packets at NahamCon 2022 (1 of 3)](https://github.com/yetanotherf0rked/ctf-writeups/blob/main/NahamCon2022/Just%20crafting%20packets%20at%20Nahamcon2022%20(1%20of%203).md)
    - [nneonneo - server.py](https://gist.github.com/nneonneo/1b371ac9da8703eda9c3a9b26d61a483)
 
