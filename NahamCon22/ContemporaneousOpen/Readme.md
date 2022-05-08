@@ -129,7 +129,9 @@ In order to connect with the server we need to create the following packets:
    - ack num : server's SYN packet seq num + 1
    - TCP flags : ACK
 
-I know, it's a little confusing, but it makes stronger our knowlegde in how TCP works and our packet-level understanding.
+I know, it's a little confusing, but it makes stronger our knowlegde in how TCP works and our packet-level understanding. What we are about to do is [this](http://www.tcpipguide.com/free/t_TCPConnectionEstablishmentProcessTheThreeWayHandsh-4.htm):
+
+![screenshot](http://www.tcpipguide.com/free/diagrams/tcpopensimul.png)
 
 Next step is to get rid of the RST+ACK packet sent by our machine. This can be done with the help of iptables included in our machine or with a external firewall in our local network. The easiest way is to set a new iptables rule to stop (drop) RST packets get out from our machine, we can achieve it with the following command:
 ```bash
