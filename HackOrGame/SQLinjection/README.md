@@ -185,5 +185,5 @@ Also, check out the scripts made by @alguien and @XenoMuta:
   - [solve.py](https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/HackOrGame/SQLinjection/solve.py)  -> Implemented Binary Search
   - [xm-exploit.py](https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/HackOrGame/SQLinjection/xm-exploit.py)
 
-And join HackOrGame community on discord, it belongs to my friends from Perú 🇵🇪 \
+And join HackOrGame community on discord, it belongs to my friends from Perú <img src="https://github.com/lipis/flag-icons/blob/main/flags/1x1/pe.svg" height="20"> \
 [https://discord.gg/eWXD6AHPQk](https://discord.gg/eWXD6AHPQk)
