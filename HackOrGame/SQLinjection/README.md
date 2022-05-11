@@ -1,4 +1,5 @@
-<div>#03/05/2022</div>
+
+<div>03/05/2022</div>
 @alguien, shared an amazing CTF challenge. I tried to figure it out and learned a lot along the way. I had to wait until he showed how to solve 
 it because I couldn't do it.
 
