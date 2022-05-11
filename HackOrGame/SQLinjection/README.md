@@ -75,20 +75,57 @@ With this code we can see some important things:
  4. The code used to create the database and each value types
  5. The query executed when we try to log in
 
-If we look at the command issued to create the database, there is NO values inserted into the flag column, instead, the flag is hardcoded into the query executed when we try to log in, also the password, so, the database is just giving the username. This is why a normal SQL injection will fail in this case, because the database doesn't have the flag.
+If we look at the command issued to create the database, there is NO values inserted into the flag column, instead, the flag is hardcoded into the query executed when we try to log in, also the password, so, the database is just giving the username.
 
-We are facing a BLIND injection, because we don't see the information reflected on the website, we only receive a "correct login" message when the entered data is ok or "incorrect login" when the sent data is not ok. The technique we can do here is the UNION SELECT based on the query the website is executing.
+There are two kinds of SQL Injections, one is trying to get information INSERTED INTO THE DATABASE and other not very common that tries to get the information HARDCODED WITHIN THE QUERIES. We are in front of the second one and this is why a normal SQL injection will fail in this case, because the database doesn't have the flag and tools like sqlmap will fail.
 
-To exfiltrate the data, we can take advantage of the "order by" command. What this will do is sort the information we providde with the information stored in the original query. After the SELECT command, we need to provide 4 values separated by , to match the 4 values in the original query. The "order by 4,1" command will sort by the 4th column of the data first (the flag column) and if those values are the same, it will sort by the 1st column , and since we give a 0 as id, our data will always be on top when the flags values become the same. And this is very important because of the `.fetchone()` function in the python script, it will grab only the first row as the query result.
+We are facing here a BLIND injection, because we don't see the information reflected on the website, we only receive a "correct login" message when the entered data is ok or "incorrect login" when the sent data is not ok. The technique we can do here is the UNION SELECT based on the query the website is executing.
+
+To exfiltrate the data, we can take advantage of the ["ORDER BY"](https://www.sqlitetutorial.net/sqlite-order-by/) command. What this will do is sort the information we providde with the information stored in the original query. After the SELECT command, we need to provide 4 values separated by , to match the 4 values in the original query. The "ORDER BY 4,1" command will sort by the 4th column of the data first (the flag column) and if those values are the same, it will sort by the 1st column then, and since we give a 0 as id, our data will always be on top when the flags values become the same. And this is very important because of the [.fetchone()](https://www.tutorialspoint.com/what-is-the-fetchone-method-explain-its-use-in-mysql-python) function in the python script, it will grab only the first row as the query result.
 
 Let's see an example: \
 Injected code: `admin' UNION SELECT 0,'x','y','z' ORDER BY 4,1 --` \
 Original query: `SELECT 1,'admin','123456','{FLAG}' FROM users WHERE username='{username}'` \
 Executed query: `SELECT 1,'admin','123456','{FLAG}' FROM users WHERE username='admin' UNION SELECT 0,'x','y','z' ORDER BY 4,1 --'` \
-Let's imagine a table created by the "order by" command, it will result like this:
+Let's imagine a table created by the "ORDER BY" command is like this:
 
 | id | username | password | flag |
 | --- | --- | --- | --- |
-| 0 | x | y | z |
 | 1 | admin | 123456 | {flag} |
+| 0 | x | y | z |
+
+Now, why it is in that order? Because the flag probably starts with a letter that is minor than the lowecase "z". This is ordered according to its place in the ascii character table. Let's think that the flag starts with the uppercase "F" or with the lowercase "f", or even any other character. Regarding the [ascii table](https://www.rapidtables.com/code/text/ascii-table.html) they have the following decimal value:
+   - F -> 70
+   - f -> 102
+   - z -> 122
+
+Remember, when we are dealing with Blind SQL injections, we will only get `True` or `False` responses. In this case we will play with the information already stored in the original query and the data we are sending to the server. For example, let's send the following injection codes into the application and see what kind of responses we get:
+```
+"admin' UNION SELECT 0,'x','y','F' ORDER BY 4,1 --" >>> False
+"admin' UNION SELECT 0,'x','y','G' ORDER BY 4,1 --" >>> True
+```
+The .fetchone() function will grab the top result in the "ORDER BY" table, so the first injection is returning `False` because the password we are sending ("123456") is NOT matching with the data in the first row. As we are getting `False` the returned message is "Sorry, your username or password is bad".
+| id | username | password | flag |
+| --- | --- | --- | --- |
+| 0 | x | y | F |
+| 1 | admin | 123456 | F???????? |
+<img src="https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/HackOrGame/SQLinjection/false-result.png" width="300">
+
+The second injected code will return `True` because now, the table is ordered upside down. The first row has the information of the original query and the password is matching with it. Now, we get the message "Nice, you are logged in! But... Where is the flag?".
+| id | username | password | flag |
+| --- | --- | --- | --- |
+| 1 | admin | 123456 | F???????? |
+| 0 | x | y | G |
+<img src="https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/HackOrGame/SQLinjection/true-result.png" width="300">
+
+Sounds confusing, but, with some practice and successful and failed attempts, you will get it.
+
+Moving forward with the testing, it's very probably the beginning of the flag is "Flag{" or "FLAG{", so, let's skip that characters and continue guessing the next letter:
+```
+"admin' UNION SELECT 0,'x','y','FLAG{E' ORDER BY 4,1 --" >>> False
+"admin' UNION SELECT 0,'x','y','FLAG{F' ORDER BY 4,1 --" >>> True
+```
+This means the flag starts with capital "E". We have "FLAG{E" so far.
+
+
 
