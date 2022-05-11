@@ -77,8 +77,6 @@ With this code we can see some important things:
 
 If we look at the command issued to create the database, there is NO values inserted into the flag column, instead, the flag is hardcoded into the query executed when we try to log in, also the password, so, the database is just giving the username. This is why a normal SQL injection will fail in this case, because the database doesn't have the flag.
 
-As we know the executed query, it help us for making our injection code. We already know how many columns the table has, even the name of the table. So, this save a lot of work.
-
 We are facing a BLIND injection, because we don't see the information reflected on the website, we only receive a "correct login" message when the entered data is ok or "incorrect login" when the sent data is not ok. The technique we can do here is the UNION SELECT based on the query the website is executing.
 
 To exfiltrate the data, we can take advantage of the "order by" command. What this will do is sort the information we providde with the information stored in the original query. After the SELECT command, we need to provide 4 values separated by , to match the 4 values in the original query. The "order by 4,1" command will sort by the 4th column of the data first (the flag column) and if those values are the same, it will sort by the 1st column , and since we give a 0 as id, our data will always be on top when the flags values become the same. And this is very important because of the `.fetchone()` function in the python script, it will grab only the first row as the query result.
