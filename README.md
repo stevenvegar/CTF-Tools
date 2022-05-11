@@ -7,3 +7,7 @@ My own developed tools used in CTF competitions
    - [packet_sniffer.py](https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/NahamCon22/ContemporaneousOpen/packet_sniffer.py)
    - [TCPSimultaneousOpen.py](https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/NahamCon22/ContemporaneousOpen/TCPSimultaneousOpen.py)
 
+## HackOrGame
+- [SQLInjection](https://github.com/stevenvegar/CTF-Writeups-and-Tools/tree/main/HackOrGame/SQLinjection)
+   - [exploit.py](https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/HackOrGame/SQLinjection/exploit.py)  --> Blind data extractor
+   - [solve.py](https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/HackOrGame/SQLinjection/solve.py)   --> Implemented Binary Search
