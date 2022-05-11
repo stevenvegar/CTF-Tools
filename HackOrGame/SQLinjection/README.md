@@ -177,6 +177,10 @@ The first function check_flag(i) will receive a number and it will convert it in
 The second function concurrent_reqs() utilize a feature on Python called concurrent.futures, what it does is just to execute the desired function with different argument values at the same time. So, instead of executing it one number by one, it will send all the requests at once.
 The get_flag() function is just getting the correct letter from the functions above and printing the in the same line.
 Finally, the __main__ fucntion is executing the whole code but putting a time benchmark, just to know how many time it gets in guess the flag.
-<img src="https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/HackOrGame/SQLinjection/sqlinjection.png" width="500">
+<img src="https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/HackOrGame/SQLinjection/exploit.png" width="500">
 
 If you want to execute the vulnerable code, just execute the app.py script, modify it to create the database first, then put in the same directory index.html and the folder "templates" which have the same index.html file. It should work properly on localhost.
+
+Also, check out the scripts made by @alguien and @XenoMuta:
+  - [solve.py](https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/HackOrGame/SQLinjection/solve.py)  -> Implemented Binary Search
+  - [xm-exploit.py](https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/HackOrGame/SQLinjection/xm-exploit.py)
