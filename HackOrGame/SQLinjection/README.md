@@ -94,7 +94,7 @@ Let's imagine a table created by the "ORDER BY" command is like this:
 | 1 | admin | 123456 | {flag} |
 | 0 | x | y | z |
 
-Now, why it is in that order? Because the flag probably starts with a letter that is minor than the lowecase "z". This is ordered according to its place in the ascii character table. Let's think that the flag starts with the uppercase "F" or with the lowercase "f", or even any other character. Regarding the [ascii table](https://www.rapidtables.com/code/text/ascii-table.html) they have the following decimal value:
+Now, why is it in that order? Because the flag probably starts with a letter that is minor than the lowecase "z". This is ordered according to its place in the ascii character table. Let's think that the flag starts with the uppercase "F" or with the lowercase "f", or even any other character. Regarding the [ascii table](https://www.rapidtables.com/code/text/ascii-table.html) they have the following decimal value:
    - F -> 70
    - f -> 102
    - z -> 122
@@ -120,7 +120,7 @@ The second injected code will return `True` because now, the table is ordered up
 
 Sounds confusing, but, with some practice and successful and failed attempts, you will get it.
 
-Moving forward with the testing, it's very probably the beginning of the flag is "Flag{" or "FLAG{", so, let's skip that characters and continue guessing the next letter:
+Moving forward with the testing, it's very probably the beginning of the flag is "Flag{" or "FLAG{", so, let's skip those characters and continue guessing the next letter:
 ```
 "admin' UNION SELECT 0,'x','y','FLAG{E' ORDER BY 4,1 --" >>> False
 "admin' UNION SELECT 0,'x','y','FLAG{F' ORDER BY 4,1 --" >>> True
@@ -176,7 +176,7 @@ if __name__ == '__main__':
 The first function check_flag(i) will receive a number and it will convert it into the ASCII character with the char() function, then, it will append this character to the previous captured flag and send it as a payload in a request to the website. It will return the last failed character in the SQL injection. \
 The second function concurrent_reqs() utilize a feature on Python called concurrent.futures, what it does is just to execute the desired function with different argument values at the same time. So, instead of executing it with a number one by one, it will send all the requests at once. \
 The get_flag() function is just getting the correct letter from the functions above and printing it the in the same line. \
-Finally, the __main__ fucntion is executing the whole code and putting a time benchmark, just to know how many time it gets until the flag is guessed. \
+Finally, the __main__ function is executing the whole code and putting a time benchmark, just to know how many time it gets until the flag is guessed. \
 <img src="https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/HackOrGame/SQLinjection/exploit.png" width="550">
 
 If you want to execute the vulnerable code, just execute the app.py script, modify it to create the database first, then put in the same directory index.html and the folder "templates" which have the same index.html file. It should work properly on localhost.
