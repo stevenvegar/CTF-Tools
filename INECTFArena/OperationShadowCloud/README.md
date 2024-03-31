@@ -37,7 +37,7 @@ At the end, shows a list of the successful commands, including any additional op
 
 
 ## [commands_file.json](https://github.com/stevenvegar/CTF-Tools/blob/main/INECTFArena/OperationShadowCloud/commands_file.json)
-This file has the complete list of every command and its required options of each service you can access via the CLI. It is consumed by the main script to construct the appopiate command based on uset's input.
+This file has the complete list of every command and its required options of each service you can access via the CLI. It is consumed by the main script to construct the appopiate commands based on the user's input.
 
 ## [create_commands_file.py](https://github.com/stevenvegar/CTF-Tools/blob/main/INECTFArena/OperationShadowCloud/create_commands_file.py)
-This script creates an updated commands_file.json file from the AWS SDK API documentation. It is not necessary to run because the file is already created, but just in case.
+This script creates an updated commands_file.json file from the AWS SDK API documentation. It is not necessary to run it because the file is already created, but just in case.
