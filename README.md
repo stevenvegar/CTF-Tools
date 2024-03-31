@@ -11,3 +11,9 @@ My own developed tools used in CTF competitions
 - [SQLInjection](https://github.com/stevenvegar/CTF-Writeups-and-Tools/tree/main/HackOrGame/SQLinjection)
    - [exploit.py](https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/HackOrGame/SQLinjection/exploit.py)   --> Blind data extractor
    - [solve.py](https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/HackOrGame/SQLinjection/solve.py)   --> Implemented Binary Search
+
+## INE's CTF Arena
+- [OperationShadowCloud](https://github.com/stevenvegar/CTF-Writeups-and-Tools/tree/main/INECTFArena/OperationShadowCloud)
+   - [aws_enum_for_ctf.py](https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/INECTFArena/OperationShadowCloud/aws_enum_for_ctf.py)   --> AWS access enumeration tool
+   - [create_commands_file.py](https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/INECTFArena/OperationShadowCloud/create_commands_file.py)   --> Script to extract AWS CLI commands
+   - [commands_file.json](https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/INECTFArena/OperationShadowCloud/commands_file.json)   --> Complete AWS CLI commands list
