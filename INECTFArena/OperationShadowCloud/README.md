@@ -22,16 +22,16 @@ This script has some useful features to improve the enumeration:
 ### Usage:
 ` python3 ./aws_enum_for_ctf.py --profile <PROFILE> `
 
-With no additional options, it executes the level 1 of enumeration, the most common services are requested; and shows the issued command and outputs the result if this not exceed 2000 bytes limit.
+With no additional options, it executes the level 1 of enumeration, the most common services are requested; and shows the issued command and outputs the result if this not exceed 2000 bytes limit.\
 <img src="/INECTFArena/OperationShadowCloud/images/3_no_add_options.png" width=70%>
 
-When the script finishes enumeration, provides a summary of successful commands and their output size generated from each one. Providing a list for further manual enumeration.
+When the script finishes enumeration, provides a summary of successful commands and their output size generated from each one. Providing a list for further manual enumeration.\
 <img src="/INECTFArena/OperationShadowCloud/images/4_summary.png" width=70%>
 
-If additional options are provided, helps to narrow the enumeration and information extraction process. As shown below, ` --service "s3" ` indicates the specific service to enumerate, also ` --options "--bucket stvg4r-test1" ` indicates to the script that should execute every command that has the "--bucket" parameter.
+If additional options are provided, helps to narrow the enumeration and information extraction process. As shown below, ` --service "s3" ` indicates the specific service to enumerate, also ` --options "--bucket stvg4r-test1" ` indicates to the script that should execute every command that has the "--bucket" parameter.\
 <img src="/INECTFArena/OperationShadowCloud/images/5_service.png" width=70%>
 
-At the end, shows a list of the successful commands, including any additional options provided.
+At the end, shows a list of the successful commands, including any additional options provided.\
 <img src="/INECTFArena/OperationShadowCloud/images/6_service.png" width=70%>
 
 
