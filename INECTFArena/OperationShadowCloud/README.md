@@ -9,7 +9,7 @@ Inspired by the CTF challenges, I developed my own AWS enumeration tool called `
 This script facilitates the identification of available AWS CLI commands based on the current permissions and credentials. It executes each command to determine which ones are executable.
 ![1_help.png](https://github.com/stevenvegar/CTF-Tools/blob/main/INECTFArena/OperationShadowCloud/images/1_help.png)
 
-First of all, you need to provide an AWS CLI profile which you can configure it with ` aws configure ` or you can modify the ` ~/.aws/credentials ` file. This should look like this:
+First of all, you need to provide an AWS CLI profile which you can configure it with ` aws configure ` or you can modify the ` ~/.aws/credentials ` file. This should look like this:\
 <img src="/INECTFArena/OperationShadowCloud/images/2_creds.png" width=70%>
 
 This script has some useful features to improve the enumeration:
