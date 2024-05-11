@@ -17,3 +17,7 @@ My own developed tools used in CTF competitions
    - [aws_enum_for_ctf.py](https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/INECTFArena/OperationShadowCloud/aws_enum_for_ctf.py)   --> AWS access enumeration tool
    - [create_commands_file.py](https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/INECTFArena/OperationShadowCloud/create_commands_file.py)   --> Script to extract AWS CLI commands
    - [commands_file.json](https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/INECTFArena/OperationShadowCloud/commands_file.json)   --> Complete AWS CLI commands list
+
+## HackTheBox
+- [Valentine](https://github.com/stevenvegar/CTF-Writeups-and-Tools/tree/main/HackTheBox/Valentine)
+   - [Heartbleed.py](https://github.com/stevenvegar/CTF-Writeups-and-Tools/blob/main/HackTheBox/Valentine/Heartbleed.py)   --> Heartbleed on Python3
